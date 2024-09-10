@@ -1,3 +1,5 @@
+# New Window PC Setup
+
 0. enable "show file extensions" and "show hidden files" in windows start menu
 1. Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 2. Install vscode `https://visualstudio.microsoft.com/downloads/`
