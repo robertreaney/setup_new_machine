@@ -18,3 +18,6 @@ git config --global core.autocrlf false
 git config --global user.name "My Name"
 git config --global user.email "email@domain"
 ```
+2. configure vscode
+    - install extensions with provided list and script
+    - set keybind for `Debug: Evaluate in Debug Console`
