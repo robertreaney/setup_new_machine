@@ -10,3 +10,11 @@
     `Get-Content extensions.txt | ForEach-Object { code --install-extension $_ }`
 5. `https://dbeaver.io/download/`
 6. `https://www.rarlab.com/download.html`
+
+# Another list
+1. Setup git
+```bash
+git config --global core.autocrlf false
+git config --global user.name "My Name"
+git config --global user.email "email@domain"
+```
