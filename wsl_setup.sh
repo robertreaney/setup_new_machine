@@ -2,7 +2,7 @@
 
 # python, git and other generic stuff
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y software-properties-common unzip python3-pip python3.10-venv gnupg git git-lfs ca-certificates curl
+sudo apt install -y software-properties-common unzip python3-pip python3.10-venv gnupg git git-lfs ca-certificates curl sqlite3
 sudo apt update && sudo apt upgrade -y
 echo 'alias python=python3' >> ~/.bashrc && source ~/.bashrc
 
