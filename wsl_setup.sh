@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# python
+# python, git and other generic stuff
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y software-properties-common unzip python3-pip python3.10-venv gnupg
+sudo apt install -y software-properties-common unzip python3-pip python3.10-venv gnupg git git-lfs ca-certificates curl
 sudo apt update && sudo apt upgrade -y
 echo 'alias python=python3' >> ~/.bashrc && source ~/.bashrc
 
@@ -21,12 +21,12 @@ sudo apt update && sudo apt install terraform
 sudo groupadd docker
 sudo usermod -aG docker ubuntu
 
-sudo apt-get update
-sudo apt-get install -y ca-certificates curl gnupg git
+
 # docker official GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
 # setup repo
 echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
