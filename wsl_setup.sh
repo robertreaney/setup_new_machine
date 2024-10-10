@@ -4,7 +4,7 @@
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y software-properties-common unzip python3-pip python3.10-venv gnupg git git-lfs ca-certificates curl
 # some things for pyenv if you end up going that route
-sudo apt-get install libbz2-dev libffi-dev libsqlite3-dev liblzma-dev lzma libpq-dev
+sudo apt-get install libbz2-dev libffi-dev libsqlite3-dev liblzma-dev lzma libpq-dev postgresql
 
 sudo apt update && sudo apt upgrade -y
 echo 'alias python=python3' >> ~/.bashrc && source ~/.bashrc
