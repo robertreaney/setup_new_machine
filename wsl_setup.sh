@@ -1,29 +1,41 @@
 #!/bin/bash
 
-# python, git and other generic stuff
+# git and other generic stuff
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y software-properties-common unzip python3-pip python3.10-venv gnupg git git-lfs ca-certificates curl
-# some things for pyenv if you end up going that route
+sudo apt install -y software-properties-common unzip gnupg git git-lfs ca-certificates curl
+
+###### PYENV ######
 sudo apt-get install libbz2-dev libffi-dev libsqlite3-dev liblzma-dev lzma libpq-dev postgresql
-
+curl https://pyenv.run | bash
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+echo 'eval "$(pyenv init -)"' >> ~/.profile
 sudo apt update && sudo apt upgrade -y
-echo 'alias python=python3' >> ~/.bashrc && source ~/.bashrc
+pyenv install 3.12
+pyenv global 3.12
+alias python=python3.12
 
-# aws cli
+###### UV PACKAGE MANAGER ####
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+###### AWS CLI ######
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 sudo apt update
 
-# install terraform
+###### TERRAFORM ######
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 
+###### DOCKER ######
 # setup docker containerd container engine directly (instead of docker desktop in windows)
 sudo groupadd docker
 sudo usermod -aG docker ubuntu
-
 
 # docker official GPG key
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -41,7 +53,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo apt-get update
 
-# setup docker gpu access
+###### DOCKER GPU ACCESS ######
 # may need to start service
 # sudo service docker start
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
