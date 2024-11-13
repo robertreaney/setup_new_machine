@@ -4,6 +4,7 @@
 1. Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 2. Install vscode `https://visualstudio.microsoft.com/downloads/`
     - select "open with code" directory context on install menu
+    - Python.REPL: Enable REPLSmart Send   <-- enable this in settings
 3. install wsl `https://learn.microsoft.com/en-us/windows/wsl/install`
     - use the `wsl_setup.sh` script after getting your linux dist installed
 4. install vscode extensions with this command
