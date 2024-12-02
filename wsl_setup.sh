@@ -1,25 +1,20 @@
 #!/bin/bash
 
+# prebuilt-MPR support for just
+wget -qO - 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
+echo "deb [arch=all,$(dpkg --print-architecture) signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr $(lsb_release -cs)" | sudo tee /etc/apt/sources.list.d/prebuilt-mpr.list
+sudo apt update
+
 # git and other generic stuff
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y software-properties-common unzip gnupg git git-lfs ca-certificates curl
-
-###### PYENV ######
-sudo apt-get install libbz2-dev libffi-dev libsqlite3-dev liblzma-dev lzma libpq-dev postgresql
-curl https://pyenv.run | bash
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
-echo 'eval "$(pyenv init -)"' >> ~/.profile
-sudo apt update && sudo apt upgrade -y
-pyenv install 3.12
-pyenv global 3.12
-alias python=python3.12
+sudo apt install -y software-properties-common unzip gnupg git git-lfs ca-certificates curl just
+sudo apt update
 
 ###### UV PACKAGE MANAGER ####
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
+###### Install Python ###
+uv python install 3.12
 
 ###### AWS CLI ######
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
