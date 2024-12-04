@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# prebuilt-MPR support for just
+###### git and other generic stuff ######
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y software-properties-common unzip gnupg git git-lfs ca-certificates curl
+sudo apt update
+
+###### JUST ######
 wget -qO - 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
 echo "deb [arch=all,$(dpkg --print-architecture) signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr $(lsb_release -cs)" | sudo tee /etc/apt/sources.list.d/prebuilt-mpr.list
 sudo apt update
-
-# git and other generic stuff
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y software-properties-common unzip gnupg git git-lfs ca-certificates curl just
-sudo apt update
+sudo apt install -y just
 
 ###### UV PACKAGE MANAGER ####
 curl -LsSf https://astral.sh/uv/install.sh | sh
