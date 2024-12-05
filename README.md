@@ -6,13 +6,18 @@
     - select "open with code" directory context on install menu
     - Python.REPL: Enable REPLSmart Send   <-- enable this in settings
     - Debug: Evaluate in Debug Console  <-- set this keybinding
-3. install wsl `https://learn.microsoft.com/en-us/windows/wsl/install`
-    - use the `wsl_setup.sh` script after getting your linux dist installed
-4. install vscode extensions with this command
+3. install vscode extensions with this command
     `Get-Content extensions.txt | ForEach-Object { code --install-extension $_ }`
+   - or download the following extensions from the marketplace in vscode
+   
+     `kevinrose.vsc-python-indent`, `ms-vscode-remote.vscode-remote-extensionpack`, `ms-toolsai.jupyter`, `ms-python.python`, `gruntfuggly.todo-tree`
+      
 5. `https://dbeaver.io/download/`
 6. `https://www.rarlab.com/download.html`
+7. install wsl `https://learn.microsoft.com/en-us/windows/wsl/install`
+    - use the `wsl_setup.sh` script after getting your linux dist installed
 
+      
 # Another list
 1. Setup git
 ```bash
