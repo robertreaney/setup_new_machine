@@ -22,6 +22,7 @@
 1. Setup git
 ```bash
 git config --global core.autocrlf false
+git config --global core.eol lf
 git config --global user.name "My Name"
 git config --global user.email "email@domain"
 ```
